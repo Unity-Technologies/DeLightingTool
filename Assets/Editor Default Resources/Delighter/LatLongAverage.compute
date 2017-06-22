@@ -1,0 +1,73 @@
+#include "UnityCG.cginc"
+
+// Constant buffer
+CBUFFER_START (ParamsEZRUITY)
+
+    // x: input width
+    // y: input height
+    // z: output width
+    // w: output height
+    float4 _TextureSizes;
+
+CBUFFER_END
+
+// Outputs
+RWStructuredBuffer<uint4> _AverageCol;
+
+// Inputs
+Texture2D<float4> _LatLong;
+
+
+#define InputSize    _TextureSizes.xy
+#define OutputSize   _TextureSizes.zw
+
+float getLuminance(float3 c)
+{
+	return (c.x * 0.212655 + c.y * 0.715158 + c.z * 0.072187);
+}
+
+float3 NormalFromNM(float3 nm)
+{
+	return nm * 2.0 - 1.0;
+}
+
+float2 LLCoordFromVector(float3 v)
+{
+	float Y = acos(v.z) / UNITY_PI;
+	float X = atan2(v.y, v.x) / (2.0 * UNITY_PI);
+	return float2(X + 0.5, saturate(1.0 - Y));
+}
+
+void FillBuffer(RWStructuredBuffer<uint4> buffer, uint index, uint4 values)
+{
+    InterlockedAdd(buffer[index].x, values.x);
+    InterlockedAdd(buffer[index].y, values.y);
+    InterlockedAdd(buffer[index].z, values.z);
+    InterlockedAdd(buffer[index].w, values.w);
+}
+
+// Kernel
+#define TILE_X      32
+#define TILE_Y      32
+#pragma kernel      KLatLongAverage
+[numthreads(TILE_X,TILE_Y,1)]
+void KLatLongAverage(uint2 dispatchId : SV_DispatchThreadID)
+{
+
+	if (dispatchId.x < (uint)InputSize.x && dispatchId.y < (uint)InputSize.y)
+	{
+		float SphericalWeight = sin((dispatchId.y / InputSize.y) * UNITY_PI);
+
+		float4 LatLong_Color = _LatLong[dispatchId];
+		float CloseToMidExposure = pow(1 - (abs(getLuminance(LatLong_Color) - 0.7) * 2), 3);
+
+
+		float LatLong_Weigth = LatLong_Color.a * SphericalWeight * CloseToMidExposure * 255;
+
+		LatLong_Color *= LatLong_Weigth;
+		LatLong_Color.a = LatLong_Weigth;
+
+		FillBuffer(_AverageCol, 0, LatLong_Color);
+	}
+
+}

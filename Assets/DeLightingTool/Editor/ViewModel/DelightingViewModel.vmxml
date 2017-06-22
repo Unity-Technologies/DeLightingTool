@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<view-model namespace="UnityEditor.DelightingInternal">
+    <using>System.Collections.Generic</using>
+    <using>UnityEngine</using>
+
+    <!-- Input Parameters -->
+    <property type="bool" name="foldInputParameters" default="true" />
+    <property type="bool" name="foldOptionalParameters" default="true" />
+    <property type="bool" name="switchYZaxes" />
+    <property type="Texture2D" name="baseTexture" />
+    <property type="Texture2D" name="normalsTexture" />
+    <property type="Texture2D" name="bentNormalsTexture" />
+    <property type="Texture2D" name="ambientOcclusionTexture" />
+    <property type="Texture2D" name="positionTexture" />
+
+    <!-- Deligting Parameters -->
+    <property type="bool" name="foldDelightingParameters" default="true" />
+    <property type="float" name="smoothNormals" default="0" />
+	<property type="float" name="removeHighlights" default="0.3f" />
+	<property type="float" name="removeDarkNoise" default="0.0f" />
+	<property type="float" name="separateDarkAreas" default="0.0f" />
+	<property type="float" name="forceLocalDelighting" default="0.0f"/>
+
+    <!-- Optional Parameters -->
+    <property type="Texture2D" name="maskTexture" />
+
+    <!-- Viewer parameters -->
+    <property type="float" name="compareViewLerp" default="0.5f" />
+    <property type="DelightingViewMode" name="leftViewMode" default="DelightingViewMode.Base" />
+    <property type="DelightingViewMode" name="rightViewMode" default="DelightingViewMode.BaseUnlit" />
+
+    <!-- Miscellaneous -->
+    <property type="DelightingUI.Mode" name="displayedUIMode" />
+    <property type="DelightingUI.Display" name="displayedUI"><getter>return GetDisplaysFor(${displayedUIMode})</getter></property>
+    <property type="bool" name="autoCompute" />
+    <property type="bool" name="hasValidInput"><getter>return m_Service.ValidateInputs() == 0;</getter></property>
+    <property type="Delighting.ErrorCode" name="inputErrorCode"><getter>return m_Service.ValidateInputs()</getter></property>
+    <property type="bool" name="loadingShow" />
+    <property type="float" name="loadingProgress" />
+    <property type="string" name="loadingContent" />
+    <property type="List&lt;string&gt;" name="inspectorErrorMessages" default="new List&lt;string&gt;()" ><getter>return GetErrorMessagesFrom(${inputErrorCode});</getter></property>
+	<property type="bool" name="overrideReferenceZone" />
+	<property type="ComputeBuffer" name="latLongAverage" />
+
+    <!-- Canvas -->
+    <property type="RenderTexture" name="previewTexture" />
+    <property type="Vector2" name="cameraPosition" />
+    <property type="float" name="zoom" default="1" /> 
+    <property type="Vector2" name="exposureGizmoPosition">
+        <getter />
+        <setter>
+            if (m_ExposureGizmoPosition != value)
+            {
+                m_ExposureGizmoPosition = value;
+                if (baseTexture != null)
+                {
+                    m_ExposureGizmoPosition.x = Mathf.Clamp(value.x, 0, baseTexture.width);
+                    m_ExposureGizmoPosition.y = Mathf.Clamp(value.y, 0, baseTexture.height);
+                }
+                return true;
+            }
+            return false;
+        </setter>
+    </property>
+    <property type="float" name="exposureGizmoRadius" default="256" />
+    <property type="bool" name="fitCanvasToWindow" />
+
+    <!-- Debug Properties -->
+    <property type="bool" name="foldDebugParameters" default="true" />
+    <property type="RenderTexture" name="latLongA" />
+    <property type="RenderTexture" name="bakedLUT" />
+    <property type="float" name="latLongExposure" default="1" />
+    <property type="Vector4" name="safetyZoneParams">
+        <getter>
+            return new Vector4(
+                ${exposureGizmoPosition}.x / ${bentNormalsTexture}.width,
+                1 - (${exposureGizmoPosition}.y / ${bentNormalsTexture}.height),
+                ${exposureGizmoRadius},
+                ${switchYZaxes} ? 1 : 0)
+        </getter>
+    </property>
+
+    <!-- Import Properties -->
+    <property type="bool" name="foldImportParameters" />
+    <property type="string" name="baseTextureSuffix" default="DelightingService.kDefaultBaseTextureSuffix" />
+    <property type="string" name="normalsTextureSuffix"  default="DelightingService.kDefaultNormalsTextureSuffix" />
+    <property type="string" name="bentNormalsTextureSuffix"  default="DelightingService.kDefaultBentNormalsTextureSuffix" />
+    <property type="string" name="ambientOcclusionTextureSuffix"  default="DelightingService.kDefaultAmbientOcclusionTextureSuffix" />
+    <property type="string" name="positionsTextureSuffix"  default="DelightingService.kDefaultPositionTextureSuffix" />
+    <property type="string" name="maskTextureSuffix"  default="DelightingService.kDefaultMaskTextureSuffix" />
+
+    <!-- Commands -->
+    <command name="CmdResetExposureZone" />
+    <command name="CmdExport" />
+    <command name="CmdExportMainEnvMap" />
+    <command name="CmdProcessFromColorCorrection" />
+	<command name="CmdProcessFromGather" />
+    <command name="CmdRenderPreview" />
+
+    <property type="string" name="inputFolderPath" />
+    <command name="CmdLoadInputFolder" />
+</view-model>

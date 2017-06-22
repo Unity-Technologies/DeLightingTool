@@ -1,0 +1,157 @@
+#include "UnityCG.cginc"
+
+// Constant buffer
+CBUFFER_START (ParamsEZRUITY)
+
+    // x: input width
+    // y: input height
+    // z: output width
+    // w: output height
+    float4 _TextureSizes;
+
+
+    bool _SwitchYZ;
+	bool _ValidMask;
+	bool _ValidPosition;
+
+
+CBUFFER_END
+
+// Outputs
+RWStructuredBuffer<uint4> _LatLongArray;
+
+// Inputs
+Texture2D<float4> _SourceBase;
+Texture2D<float4> _SourceNM;
+Texture2D<float4> _SourceAO;
+Texture2D<float4> _SourcePos;
+Texture2D<float4> _SourceMask;
+
+
+#define InputSize    _TextureSizes.xy
+#define OutputSize   _TextureSizes.zw
+
+// Utility functions
+float3 NormalFromNM(float3 nm)
+{
+    return nm * 2.0 - 1.0;
+}
+
+
+float2 LLCoordFromVector(float3 v)
+{
+    float Y = acos(v.z) / UNITY_PI;
+    float X = atan2(v.y, v.x) / (2.0 * UNITY_PI);
+    return float2(X + 0.5, saturate(1.0 - Y));
+}
+
+void FillBuffer(RWStructuredBuffer<uint4> buffer, uint index, uint4 values)
+{
+    InterlockedAdd(buffer[index].x, values.x);
+    InterlockedAdd(buffer[index].y, values.y);
+    InterlockedAdd(buffer[index].z, values.z);
+    InterlockedAdd(buffer[index].w, values.w);
+}
+
+uint indexFromCoord (float3 coords, uint gridRes)
+{
+	uint3 clusterPos = floor(coords * gridRes);
+
+	uint clusterIndex = clusterPos.x + (clusterPos.y * gridRes) + (clusterPos.z * gridRes * gridRes);
+
+	return clusterIndex;
+}
+
+// Kernel
+#define TILE_X      32
+#define TILE_Y      32
+#pragma kernel      KLatLongArrayGather
+[numthreads(TILE_X,TILE_Y,1)]
+void KLatLongArrayGather(uint2 dispatchId : SV_DispatchThreadID)
+{
+    if (dispatchId.x < (uint)InputSize.x && dispatchId.y < (uint)InputSize.y)
+    {
+		float2 UVs = float2((float)dispatchId.x / (float)InputSize.x, (float)dispatchId.y / (float)InputSize.y);
+		
+		float4 Base_Color = _SourceBase[dispatchId];
+		Base_Color.rgb = LinearToGammaSpace(Base_Color.rgb);
+
+
+        float4 NM_Color = _SourceNM[dispatchId];
+        float4 AO_Color = _SourceAO[dispatchId];
+		float4 Mask_Color = _ValidMask ? _SourceMask[dispatchId] : float4(0,0,0,0) ;
+		float4 Pos_Color = _ValidPosition ? _SourcePos[dispatchId] : float4(UVs.x, UVs.y, 0, 0);
+
+
+        float3 Normal = NormalFromNM(NM_Color.rgb);
+        if (_SwitchYZ)
+        {
+            Normal = Normal.rbg * float3(1, -1, 1);
+        }
+
+		uint LLclusterSize = OutputSize.x * OutputSize.y;
+		
+		float ColorWeightA = Base_Color.a * (1 - Mask_Color.r) * AO_Color;
+		float4 color = float4(Base_Color.rgb, 1.0) * ColorWeightA;
+		color = round(color * 255);
+
+		uint shiftIndex = 0;
+		uint clusterIndex = 0;
+		uint LLCoords_1D_Mip = 0;
+		int _GridRes = 0;
+
+
+		// Mip_Grid_1x1x1 -------------------------------------
+
+		uint2 LLCoords = uint2(round(LLCoordFromVector(Normal) * OutputSize));
+        uint LLCoords_1D = LLCoords.y * OutputSize.x + LLCoords.x;
+		FillBuffer(_LatLongArray, LLCoords_1D, color);
+
+		shiftIndex += 1;
+
+
+		// Mip_Grid_2x2x2 -------------------------------------
+		_GridRes = 2;
+		
+		clusterIndex = indexFromCoord(Pos_Color, _GridRes) + shiftIndex;
+		LLCoords_1D_Mip = (clusterIndex * LLclusterSize) + LLCoords_1D;
+		FillBuffer(_LatLongArray, LLCoords_1D_Mip, color);
+
+		shiftIndex += _GridRes*_GridRes*_GridRes;
+
+
+
+		// Mip_Grid_4x4x4 -------------------------------------
+		_GridRes = 4;
+		
+		clusterIndex = indexFromCoord(Pos_Color, _GridRes) + shiftIndex;
+		LLCoords_1D_Mip = (clusterIndex * LLclusterSize) + LLCoords_1D;
+		FillBuffer(_LatLongArray, LLCoords_1D_Mip, color);
+
+		shiftIndex += _GridRes*_GridRes*_GridRes;
+
+
+
+		// Mip_Grid_8x8x8 -------------------------------------
+		_GridRes = 8;
+		
+		clusterIndex = indexFromCoord(Pos_Color, _GridRes) + shiftIndex;
+		LLCoords_1D_Mip = (clusterIndex * LLclusterSize) + LLCoords_1D;
+		FillBuffer(_LatLongArray, LLCoords_1D_Mip, color);
+
+		shiftIndex += _GridRes*_GridRes*_GridRes;
+
+
+
+		// Mip_Grid_16x16x16 -------------------------------------
+		_GridRes = 16;
+		
+		clusterIndex = indexFromCoord(Pos_Color, _GridRes) + shiftIndex;
+		LLCoords_1D_Mip = (clusterIndex * LLclusterSize) + LLCoords_1D;
+		FillBuffer(_LatLongArray, LLCoords_1D_Mip, color);
+
+
+
+
+    }
+}

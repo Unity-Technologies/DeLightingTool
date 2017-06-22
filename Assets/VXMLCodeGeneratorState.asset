@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a956b84c0fd1e449ae028c8e1c4643, type: 3}
+  m_Name: VXMLCodeGeneratorState
+  m_EditorClassIdentifier: 
+  m_FileDependency:
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolInspectorContainer.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolInspectorToolbarContainer.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolCanvasToolbarContainer.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolCanvasSeparatorContainer.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolCanvasExposureGizmo.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolDebugTextureContainer.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
+  - declaringFile: Assets/DeLightingTool/Editor/UI/DelightingToolCanvasContainer.vxml
+    referencedFile: Assets/DeLightingTool/Editor/UI/DelightingToolVisualContainer.vxml
