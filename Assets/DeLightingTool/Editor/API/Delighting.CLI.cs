@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor.DelightingInternal;
+using UnityEngine;
 
 public class DelightingCLI
 {
