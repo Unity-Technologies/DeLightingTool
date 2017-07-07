@@ -6,7 +6,7 @@ Check the [documentation](https://github.com/Unity-Technologies/DeLightingTool/b
 
 Check the [Unity blog post here](https://labs.unity.com/article/experimental-feature-de-lighting-tool)
 
-Check the [video overview](https://www.youtube.com/edit?o=U&video_id=Mo96vqMqnwA)
+Check the [video overview](https://www.youtube.com/watch?v=Mo96vqMqnwA&feature=youtu.be)
 
 
 
