@@ -8,6 +8,7 @@ Check the [Unity blog post here](https://labs.unity.com/article/experimental-fea
 
 Check the [video overview](https://www.youtube.com/watch?v=Mo96vqMqnwA&feature=youtu.be)
 
+Discuss [Unity Experimental forum ](https://forum.unity3d.com/threads/de-lighting-tool.482133/)
 
 
 # Getting started
