@@ -2,7 +2,7 @@ using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
-namespace UnityEditor.SSXMLInternal
+namespace UnityEditor.Experimental.SSXMLInternal
 {
     [Serializable]
     public class DOMGUIStyle

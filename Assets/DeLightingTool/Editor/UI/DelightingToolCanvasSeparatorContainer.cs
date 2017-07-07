@@ -1,8 +1,8 @@
 using System;
-using UnityEditor.VisualElements;
+using UnityEditor.Experimental.VisualElements;
 using UnityEngine;
 
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     partial class DelightingToolCanvasSeparatorContainer : IMGUIVisualContainer
     {

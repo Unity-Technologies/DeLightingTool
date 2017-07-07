@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public interface IDelighting : IDisposable
     {

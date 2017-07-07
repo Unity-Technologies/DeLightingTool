@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     public partial class VXMLDOMElementVisitor : DynamicVisitor<DOMElement>
     {

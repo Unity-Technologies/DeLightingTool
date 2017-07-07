@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     internal static class DelightingHelpers
     {

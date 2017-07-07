@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public class AsyncOperation<TType>
     {

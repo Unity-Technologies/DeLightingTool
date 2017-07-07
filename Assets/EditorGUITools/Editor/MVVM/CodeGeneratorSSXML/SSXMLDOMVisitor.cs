@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.SSXMLInternal
+namespace UnityEditor.Experimental.SSXMLInternal
 {
     class SSXMLDOMVisitor : IAssetCodeGenerator<DOMDocument>
     {
@@ -21,7 +21,9 @@ namespace UnityEditor.SSXMLInternal
             m_File = new CSFile(document.@namespace)
                 .AddWarningDisable(414)
                 .AddInclude("UnityEngine")
-                .AddInclude("UnityEditor");
+                .AddInclude("UnityEditor")
+                .AddInclude("UnityEngine.Experimental")
+                .AddInclude("UnityEditor.Experimental");
 
             m_Class = new CSClass(Scope.Internal, assetName, CSClass.Modifier.Partial)
                 .AddParent("StyleSheet");

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace UnityEditor.ViewModel
+namespace UnityEditor.Experimental.ViewModel
 {
     public class SerializedViewModelBase : ViewModelBase
     {

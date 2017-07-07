@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     [Flags]
     public enum Scope

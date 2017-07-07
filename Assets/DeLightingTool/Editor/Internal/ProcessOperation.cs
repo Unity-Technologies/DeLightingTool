@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     class ProcessOperation : Delighting.IProcessOperation
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     class VXMLCodeGeneratorState : ScriptableObject
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace UnityEditor.WXMLInternal
+namespace UnityEditor.Experimental.WXMLInternal
 {
     [Serializable]
     [XmlRoot("window")]

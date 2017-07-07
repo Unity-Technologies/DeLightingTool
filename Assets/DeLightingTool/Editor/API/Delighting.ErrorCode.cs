@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public static partial class Delighting
     {

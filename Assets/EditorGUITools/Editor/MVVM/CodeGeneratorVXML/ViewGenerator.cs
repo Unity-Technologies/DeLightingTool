@@ -1,7 +1,7 @@
 using System.Xml.Serialization;
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     class ViewGenerator : AssetCodeGeneratorBase<VXMLDOMVisitor, DOMDocument>, ICodeGenerator
     {

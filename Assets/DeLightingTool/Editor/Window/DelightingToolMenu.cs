@@ -1,4 +1,4 @@
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     static class DelightingToolMenu
     {

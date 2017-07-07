@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     using UnityObject = UnityEngine.Object;
 

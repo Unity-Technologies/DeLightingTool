@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using UnityEngine;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public class StaticClassMethodBase<TOwner>
     {

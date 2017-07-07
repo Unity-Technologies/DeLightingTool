@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     [Serializable]
     [XmlRoot("view")]

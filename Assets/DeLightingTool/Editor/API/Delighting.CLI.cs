@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.DelightingInternal;
+using UnityEditor.Experimental.DelightingInternal;
 using UnityEngine;
 
 public class DelightingCLI
 {
     public static void Run()
     {
-        UnityEditor.Delighting.CLI.Run();
+        UnityEditor.Experimental.Delighting.CLI.Run();
     }
 }
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     using UnityDebug = UnityEngine.Debug;
 

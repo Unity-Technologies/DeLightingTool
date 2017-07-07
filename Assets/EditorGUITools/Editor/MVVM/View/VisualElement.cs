@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using UnityEditor.MVVM;
+using UnityEditor.Experimental.MVVM;
 using UnityEngine;
 using UnityDebug = UnityEngine.Debug;
 
-namespace UnityEditor.VisualElements
+namespace UnityEditor.Experimental.VisualElements
 {
     public class VisualElement : IVisualElement
     {

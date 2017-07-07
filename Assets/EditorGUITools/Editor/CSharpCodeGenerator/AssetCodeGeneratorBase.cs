@@ -2,7 +2,7 @@ using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
 
-namespace UnityEditor.CodeGenerator
+namespace UnityEditor.Experimental.CodeGenerator
 {
     public abstract class AssetCodeGeneratorBase<TGenerator, TDOM>
         where TGenerator : IAssetCodeGenerator<TDOM>, new()

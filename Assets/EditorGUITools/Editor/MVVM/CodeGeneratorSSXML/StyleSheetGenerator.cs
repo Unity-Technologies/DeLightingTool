@@ -1,8 +1,8 @@
 using System.Xml.Serialization;
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 using UnityEngine;
 
-namespace UnityEditor.SSXMLInternal
+namespace UnityEditor.Experimental.SSXMLInternal
 {
     class StyleSheetGenerator : AssetCodeGeneratorBase<SSXMLDOMVisitor, DOMDocument>, ICodeGenerator
     {

@@ -1,4 +1,4 @@
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     enum DelightingViewMode
     {

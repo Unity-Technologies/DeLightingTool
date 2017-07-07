@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using UnityEditor.VisualElements;
+using UnityEditor.Experimental.VisualElements;
 using UnityEngine;
 
-namespace UnityEditor.MVVM
+namespace UnityEditor.Experimental.MVVM
 {
     public abstract class DependencyProperty
     {

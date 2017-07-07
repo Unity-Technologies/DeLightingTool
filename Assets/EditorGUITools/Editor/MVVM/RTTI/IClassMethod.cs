@@ -1,4 +1,4 @@
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public interface IClassMethod
     {

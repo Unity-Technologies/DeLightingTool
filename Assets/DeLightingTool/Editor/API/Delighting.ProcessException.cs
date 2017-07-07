@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.DelightingInternal;
+using UnityEditor.Experimental.DelightingInternal;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public static partial class Delighting
     {

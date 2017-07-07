@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace UnityEditor.VisualElements
+namespace UnityEditor.Experimental.VisualElements
 {
     public class VisualContainer : VisualElement
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public class AsyncOperationEnumerator<TType> : AsyncOperation<TType>
     {

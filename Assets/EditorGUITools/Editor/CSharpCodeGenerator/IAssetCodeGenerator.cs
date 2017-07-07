@@ -1,4 +1,4 @@
-namespace UnityEditor.CodeGenerator
+namespace UnityEditor.Experimental.CodeGenerator
 {
     public interface IAssetCodeGenerator<TDOM>
     {

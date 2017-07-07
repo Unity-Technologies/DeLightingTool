@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityEditor.VisualElements
+namespace UnityEditor.Experimental.VisualElements
 {
     public class IMGUIVisualContainer : VisualContainer, IIMGUIVisualElement
     {

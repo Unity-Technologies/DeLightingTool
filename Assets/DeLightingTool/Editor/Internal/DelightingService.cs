@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     using UnityObject = UnityEngine.Object;
 

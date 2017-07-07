@@ -2,7 +2,7 @@ using System;
 using System.Xml.Serialization;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     [Serializable]
     public class DOMResizeBase : DOMElement

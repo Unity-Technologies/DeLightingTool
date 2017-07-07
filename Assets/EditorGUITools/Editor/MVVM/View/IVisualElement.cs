@@ -1,7 +1,7 @@
 using System;
-using UnityEditor.MVVM;
+using UnityEditor.Experimental.MVVM;
 
-namespace UnityEditor.VisualElements
+namespace UnityEditor.Experimental.VisualElements
 {
     public interface IVisualElement : IDisposable
     {

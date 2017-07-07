@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     class VXMLDOMVisitor : DynamicVisitor<DOMNode>, IAssetCodeGenerator<DOMDocument>
     {
@@ -38,7 +38,7 @@ namespace UnityEditor.VXMLInternal
             m_WorkingDirectory = workingDirectory;
             m_File = new CSFile(document.@namespace)
                 .AddWarningDisable(414)
-                .AddInclude("UnityEditor.VisualElements");
+                .AddInclude("UnityEditor.Experimental.VisualElements");
 
             m_Class = new CSClass(Scope.Internal, assetName, CSClass.Modifier.Partial)
                 .AddParent("IMGUIVisualContainer");

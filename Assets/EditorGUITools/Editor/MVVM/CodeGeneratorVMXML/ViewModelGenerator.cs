@@ -1,6 +1,6 @@
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 
-namespace UnityEditor.VMXMLInternal
+namespace UnityEditor.Experimental.VMXMLInternal
 {
     class ViewModelGenerator : AssetCodeGeneratorBase<VMXMLDOMVisitor, DOMDocument>, ICodeGenerator
     {

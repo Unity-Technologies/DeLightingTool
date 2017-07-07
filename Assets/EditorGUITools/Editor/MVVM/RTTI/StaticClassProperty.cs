@@ -3,7 +3,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public class StaticClassProperty<TPropertyType, TOwnerType> : ClassProperty<TPropertyType>
     {

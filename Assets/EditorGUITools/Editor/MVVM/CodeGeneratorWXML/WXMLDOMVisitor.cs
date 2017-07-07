@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text;
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.WXMLInternal
+namespace UnityEditor.Experimental.WXMLInternal
 {
     class WXMLDOMVisitor : IAssetCodeGenerator<DOMDocument>
     {
@@ -22,7 +22,7 @@ namespace UnityEditor.WXMLInternal
                 .AddWarningDisable(414)
                 .AddInclude("System.ComponentModel")
                 .AddInclude("UnityEngine")
-                .AddInclude("UnityEditor.VisualElements")
+                .AddInclude("UnityEditor.Experimental.VisualElements")
                 .AddInclude("UnityEditor");
 
             m_Class = new CSClass(Scope.Internal, assetName, CSClass.Modifier.Partial)

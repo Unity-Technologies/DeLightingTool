@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public static partial class EditorGUIX
     {

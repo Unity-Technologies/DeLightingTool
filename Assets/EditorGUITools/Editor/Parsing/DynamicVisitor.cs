@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using UnityEngine.Assertions;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     abstract public class DynamicVisitor<TBaseType>
     {

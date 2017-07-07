@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.VMXMLInternal
+namespace UnityEditor.Experimental.VMXMLInternal
 {
     class VMXMLDOMVisitor : DynamicVisitor<DOMMember>, IAssetCodeGenerator<DOMDocument>
     {
@@ -30,7 +30,7 @@ namespace UnityEditor.VMXMLInternal
             m_Class = new CSClass(Scope.Internal, assetName, CSClass.Modifier.Partial);
             m_File
                 .AddClass(m_Class)
-                .AddInclude("UnityEditor.ViewModel")
+                .AddInclude("UnityEditor.Experimental.ViewModel")
                 .AddWarningDisable(414);
             m_Class.AddParent("SerializedViewModelBase");
 

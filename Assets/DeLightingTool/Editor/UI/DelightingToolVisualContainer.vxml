@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<view namespace="UnityEditor.DelightingInternal">
+<view namespace="UnityEditor.Experimental.DelightingInternal">
     <using>System.Collections.Generic</using>
     <using>UnityEngine</using>
 

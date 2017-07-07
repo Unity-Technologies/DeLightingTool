@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<view namespace="UnityEditor.DelightingInternal">
+<view namespace="UnityEditor.Experimental.DelightingInternal">
     <import>DelightingToolVisualContainer.vxml</import>
 </view>

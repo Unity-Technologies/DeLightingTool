@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityEditor.VXMLInternal
+namespace UnityEditor.Experimental.VXMLInternal
 {
     public class DOMTagAttribute : XmlTagBaseAttribute
     {

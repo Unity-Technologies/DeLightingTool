@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace UnityEditor.EditorGUITools
+namespace UnityEditor.Experimental.EditorGUITools
 {
     static class Install
     {

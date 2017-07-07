@@ -1,8 +1,8 @@
 using System;
-using UnityEditor.MVVM;
+using UnityEditor.Experimental.MVVM;
 using UnityEngine;
 
-namespace UnityEditor.VisualElements
+namespace UnityEditor.Experimental.VisualElements
 {
     public class EditorToggle : Toggle
     {

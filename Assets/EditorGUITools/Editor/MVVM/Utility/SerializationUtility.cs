@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class XmlTagBaseAttribute : Attribute

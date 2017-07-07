@@ -1,7 +1,7 @@
 #pragma warning disable 414
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
-    using UnityEditor.ViewModel;
+    using UnityEditor.Experimental.ViewModel;
     using System.Collections.Generic;
     using UnityEngine;
 

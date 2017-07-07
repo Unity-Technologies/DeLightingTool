@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityEditor.VMXMLInternal
+namespace UnityEditor.Experimental.VMXMLInternal
 {
     [Serializable]
     public class DOMMember

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityEditor
+namespace UnityEditor.Experimental
 {
     public abstract class ClassProperty
     {

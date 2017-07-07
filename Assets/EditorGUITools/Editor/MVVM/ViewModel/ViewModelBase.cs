@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace UnityEditor.ViewModel
+namespace UnityEditor.Experimental.ViewModel
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

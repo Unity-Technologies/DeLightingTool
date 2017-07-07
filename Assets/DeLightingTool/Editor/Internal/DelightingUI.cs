@@ -1,8 +1,6 @@
 using System;
-using System.Text;
-using UnityEngine;
 
-namespace UnityEditor.DelightingInternal
+namespace UnityEditor.Experimental.DelightingInternal
 {
     internal static class DelightingUI
     {

@@ -1,6 +1,6 @@
-using UnityEditor.CodeGenerator;
+using UnityEditor.Experimental.CodeGenerator;
 
-namespace UnityEditor.WXMLInternal
+namespace UnityEditor.Experimental.WXMLInternal
 {
     class WindowGenerator : AssetCodeGeneratorBase<WXMLDOMVisitor, DOMDocument>, ICodeGenerator
     {

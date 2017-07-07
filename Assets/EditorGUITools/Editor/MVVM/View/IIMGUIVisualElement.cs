@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityEditor.VisualElements
+namespace UnityEditor.Experimental.VisualElements
 {
     public interface IIMGUIVisualElement : IVisualElement
     {
