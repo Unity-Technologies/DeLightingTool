@@ -86,7 +86,11 @@ namespace UnityEditor.Experimental.DelightingInternal
         public DelightingService()
         {
             m_ViewModel = new DelightingViewModel(this);
+#if UNITY_2017_1_OR_NEWER
             log = UnityEngine.Debug.unityLogger;
+#else
+            log = UnityEngine.Debug.logger;
+#endif
         }
 
         public void Dispose()
@@ -119,7 +123,7 @@ namespace UnityEditor.Experimental.DelightingInternal
             }
         }
 
-        #region API
+#region API
         public Delighting.ErrorCode ValidateInputs()
         {
             var result = Delighting.ErrorCode.NoErrors;
@@ -508,7 +512,7 @@ namespace UnityEditor.Experimental.DelightingInternal
 
             yield return result;
         }
-        #endregion
+#endregion
 
         public void ExportMainEnvMapDialog()
         {
