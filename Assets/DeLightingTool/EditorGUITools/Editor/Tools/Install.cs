@@ -1,5 +1,4 @@
 using System.IO;
-using UnityEngine;
 
 namespace UnityEditor.Experimental.EditorGUITools
 {
@@ -12,7 +11,7 @@ namespace UnityEditor.Experimental.EditorGUITools
             if (!Directory.Exists(targetDir))
                 Directory.CreateDirectory(targetDir);
 
-            var editorResources = Directory.GetFiles("Assets/EditorGUITools/Editor Default Resources");
+            var editorResources = Directory.GetFiles("Assets/DeLightingTool/EditorGUITools/Editor Default Resources");
             for (int i = 0; i < editorResources.Length; i++)
             {
                 var from = editorResources[i].Replace(@"\\", "/");
@@ -21,7 +20,8 @@ namespace UnityEditor.Experimental.EditorGUITools
 
                 var to = Path.Combine(targetDir, Path.GetFileName(from));
 
-                AssetDatabase.CopyAsset(from, to);
+                if (!File.Exists(to))
+                    AssetDatabase.CopyAsset(from, to);
             }
         }
     }

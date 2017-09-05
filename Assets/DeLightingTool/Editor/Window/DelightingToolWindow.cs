@@ -83,7 +83,7 @@ namespace UnityEditor.Experimental.DelightingInternal
             m_Service.vm.ambientOcclusionTextureSuffix = prefsAmbientOcclusionTextureSuffix;
             m_Service.vm.positionsTextureSuffix = prefsPositionsTextureSuffix;
             m_Service.vm.maskTextureSuffix = prefsMaskTextureSuffix;
-            m_Service.log = new Logger(Debug.logger.logHandler);
+            m_Service.log = new Logger(Debug.unityLogger.logHandler);
             m_Service.log.filterLogType = LogType.Warning;
         }
 

@@ -1,0 +1,33 @@
+#include "UnityCG.cginc"
+
+// Constant buffer
+CBUFFER_START (ParamsEZRUITY)
+
+    // x: input width
+    // y: input height
+    // z: output width
+    // w: output height
+    float4 _TextureSizes;
+
+
+CBUFFER_END
+
+RWStructuredBuffer<uint4> _Buffer;
+uint _Threshold;
+
+
+// Kernel
+#define TILE_X      32
+#pragma kernel      KClean
+[numthreads(TILE_X,1,1)]
+void KClean(uint dispatchId : SV_DispatchThreadID)
+{
+
+	_Threshold = 10;
+	float4 bufferColor = _Buffer[dispatchId];
+	if (bufferColor.a < _Threshold)
+	{
+		_Buffer[dispatchId] = uint4(_Buffer[dispatchId].rgb, 0);
+	}
+	
+}

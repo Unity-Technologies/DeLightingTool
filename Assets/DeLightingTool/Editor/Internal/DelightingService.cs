@@ -86,7 +86,7 @@ namespace UnityEditor.Experimental.DelightingInternal
         public DelightingService()
         {
             m_ViewModel = new DelightingViewModel(this);
-            log = UnityEngine.Debug.logger;
+            log = UnityEngine.Debug.unityLogger;
         }
 
         public void Dispose()
