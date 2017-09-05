@@ -2,7 +2,7 @@
 
 The De-Lighting Tool is a tool to remove lighting information from textures in a photogrammetry asset pipeline.
 
-Check the [documentation](https://github.com/Unity-Technologies/DeLightingTool/blob/master/Documentation/De-LightingTool.pdf) 
+Check the [documentation](https://github.com/Unity-Technologies/DeLightingTool/blob/master/Assets/DeLightingTool/Documentation/De-LightingTool.pdf) 
 
 Check the [Unity blog post here](https://labs.unity.com/article/experimental-feature-de-lighting-tool)
 
