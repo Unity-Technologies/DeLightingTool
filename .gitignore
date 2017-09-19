@@ -18,6 +18,7 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
+.vs
 
 
 # Unity3D generated meta files
@@ -35,3 +36,9 @@ sysinfo.txt
 
 # Data files
 /Assets/DeLightingTool_Data
+/Assets/Editor Default Resources/EditorGUITools
+/Assets/Editor Default Resources/EditorGUITools.meta
+/Assets/Editor Default Resources/AppFramework.meta
+/Assets/Editor Default Resources/Icons.meta
+/Assets/Editor Default Resources/Icons/AppFramework
+/Assets/Editor Default Resources/Icons/AppFramework.meta
