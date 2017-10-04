@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     static class Install
     {

@@ -1,8 +1,8 @@
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     static class DelightingToolMenu
     {
-        [MenuItem("Window/Experimental/Delighting Tool")]
+        [MenuItem("Window/Delighting Tool")]
         static void Open()
         {
             Delighting.FocusWindow();

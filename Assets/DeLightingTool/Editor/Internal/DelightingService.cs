@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.IO;
+using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     using UnityObject = UnityEngine.Object;
 

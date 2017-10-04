@@ -1,9 +1,10 @@
 using System;
+using UnityEditor.Experimental;
 using UnityEditor.Experimental.VisualElements;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     partial class DelightingToolCanvasContainer : IMGUIVisualContainer, IDisposable
     {

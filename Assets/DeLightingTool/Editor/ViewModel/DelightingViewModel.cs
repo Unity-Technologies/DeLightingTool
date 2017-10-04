@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor.Experimental;
 using UnityEngine;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     partial class DelightingViewModel : IDisposable
     {

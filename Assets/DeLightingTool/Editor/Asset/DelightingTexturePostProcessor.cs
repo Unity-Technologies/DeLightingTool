@@ -1,4 +1,4 @@
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     class DelightingTexturePostProcessor : AssetPostprocessor
     {

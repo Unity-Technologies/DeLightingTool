@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     internal static class DelightingHelpers
     {

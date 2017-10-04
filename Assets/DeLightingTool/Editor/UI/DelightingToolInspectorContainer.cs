@@ -1,8 +1,9 @@
 using System;
+using UnityEditor.Experimental;
 using UnityEditor.Experimental.VisualElements;
 using UnityEngine;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     partial class DelightingToolInspectorContainer : IMGUIVisualContainer, IDisposable
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityEditor.Experimental
+namespace UnityEditor
 {
     public static partial class Delighting
     {

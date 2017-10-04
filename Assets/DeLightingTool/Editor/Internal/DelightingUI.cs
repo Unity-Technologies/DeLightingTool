@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     internal static class DelightingUI
     {

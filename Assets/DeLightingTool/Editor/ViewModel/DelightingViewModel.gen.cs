@@ -1,9 +1,10 @@
 #pragma warning disable 414
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     using UnityEditor.Experimental.ViewModel;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEditor.Experimental;
 
     internal partial class DelightingViewModel : SerializedViewModelBase
     {

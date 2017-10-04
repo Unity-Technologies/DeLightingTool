@@ -2,7 +2,7 @@ using System;
 using UnityEditor.Experimental.VisualElements;
 using UnityEngine;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     partial class DelightingToolCanvasToolbarContainer : IMGUIVisualContainer
     {

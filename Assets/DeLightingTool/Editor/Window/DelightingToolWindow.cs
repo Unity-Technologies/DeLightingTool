@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using UnityEngine;
 
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     class DelightingToolWindow : EditorWindow
     {

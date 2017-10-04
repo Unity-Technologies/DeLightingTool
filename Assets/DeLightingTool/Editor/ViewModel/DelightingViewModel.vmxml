@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<view-model namespace="UnityEditor.Experimental.DelightingInternal">
+<view-model namespace="UnityEditor.DelightingInternal">
     <using>System.Collections.Generic</using>
     <using>UnityEngine</using>
+    <using>UnityEditor.Experimental</using>
 
     <!-- Input Parameters -->
     <property type="bool" name="foldInputParameters" default="true" />

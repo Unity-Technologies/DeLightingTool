@@ -1,9 +1,10 @@
 #pragma warning disable 414
-namespace UnityEditor.Experimental.DelightingInternal
+namespace UnityEditor.DelightingInternal
 {
     using UnityEditor.Experimental.VisualElements;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEditor.Experimental;
 
     internal partial class DelightingToolCanvasContainer : IMGUIVisualContainer
     {
