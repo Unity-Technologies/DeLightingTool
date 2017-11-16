@@ -15,5 +15,5 @@ Discuss [Unity Experimental forum ](https://forum.unity3d.com/threads/de-lightin
 
   - Clone the repository
   - Download [Unity](https://store.unity.com)
-  - Open the project with Unity (Compatible Unity 5.6 and 2017.1 beta version)
+  - Open the project with Unity (Compatible from Unity 2017.1 version)
   - Open sample package: unzip [DeLighting-Tool-Data-Rock01.zip] (https://github.com/Unity-Technologies/DeLightingTool/blob/master/Documentation/DeLighting-Tool-Data-Rock01.zip) and import DeLighting-Tool-Data-Rock01.unityPackage
