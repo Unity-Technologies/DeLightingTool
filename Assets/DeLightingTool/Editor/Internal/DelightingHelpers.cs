@@ -9,6 +9,24 @@ namespace UnityEditor.DelightingInternal
 {
     internal static class DelightingHelpers
     {
+        static Stack<bool> s_GLsRGBWrite = new Stack<bool>();
+
+        internal static void PushSRGBWrite(bool sRGB)
+        {
+            s_GLsRGBWrite.Push(GL.sRGBWrite);
+#if UNITY_2018_1_OR_NEWER
+            GL.sRGBWrite = sRGB;
+#else
+            var sRGBWriteFromQualitySettings = (QualitySettings.activeColorSpace == ColorSpace.Linear);
+            GL.sRGBWrite = sRGB ? !sRGBWriteFromQualitySettings : sRGBWriteFromQualitySettings;
+#endif
+        }
+
+        internal static void PopSRGBWrite()
+        {
+            GL.sRGBWrite = s_GLsRGBWrite.Pop();
+        }
+
         internal static bool IsPathSuffixed(string assetPath, string suffix = null)
         {
             Assert.IsFalse(string.IsNullOrEmpty(assetPath));

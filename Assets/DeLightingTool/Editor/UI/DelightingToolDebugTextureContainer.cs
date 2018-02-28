@@ -34,7 +34,9 @@ namespace UnityEditor.DelightingInternal
 
                 var oldRt = RenderTexture.active;
                 m_latLongExposed = DelightingHelpers.InstantiateRTIfRequired(m_latLongExposed, latLongA.width, latLongA.height, false, TextureWrapMode.Clamp);
+                DelightingHelpers.PushSRGBWrite(false);
                 Graphics.Blit(null, m_latLongExposed, mat);
+                DelightingHelpers.PopSRGBWrite();
                 RenderTexture.active = oldRt;
 
                 GUILayout.BeginHorizontal();

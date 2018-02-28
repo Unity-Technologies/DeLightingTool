@@ -49,9 +49,9 @@ namespace UnityEditor.DelightingInternal
                 SetValue(kZoom, zoom);
 
                 GUI.BeginClip(canvasRectViewport);
-                GL.sRGBWrite = (QualitySettings.activeColorSpace == ColorSpace.Linear);
+                DelightingHelpers.PushSRGBWrite(false);
                 GUI.DrawTexture(EditorGUIX.GetCanvasDestinationRect(cameraPosition, zoom, width, height), targetTexture, ScaleMode.ScaleToFit);
-                GL.sRGBWrite = false;
+                DelightingHelpers.PopSRGBWrite();
 
                 if (Event.current.type == EventType.Repaint)
                 {

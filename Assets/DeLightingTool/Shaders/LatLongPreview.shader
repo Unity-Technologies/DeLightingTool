@@ -5,6 +5,7 @@ Shader "Hidden/Delighter/LatLongPreview"
 #include "UnityCG.cginc"
 #pragma target 5.0
 
+    #pragma shader_feature LINEAR_OUTPUT
 
 	sampler2D _latLong;
 	sampler2D _SourceNM;
@@ -77,8 +78,11 @@ Shader "Hidden/Delighter/LatLongPreview"
 
 		float4 FinalColor = lerp(float4(1,0,0,1), WBresult,SafetyZoneLerp);
 
-
-		FinalColor.rgb = lerp(FinalColor.rgb, GammaToLinearSpace(FinalColor.rgb), _Export);
+#ifdef LINEAR_OUTPUT
+        FinalColor.rgb = GammaToLinearSpace(FinalColor.rgb);
+#else
+        FinalColor.rgb = lerp(FinalColor.rgb, GammaToLinearSpace(FinalColor.rgb), _Export);
+#endif
 		FinalColor.a = 1;
 
 

@@ -74,7 +74,7 @@ namespace UnityEditor.DelightingInternal
                         }
                         break;
                     }
-                case EventType.mouseUp:
+                case EventType.MouseUp:
                     if (evt.button == 0 && EditorGUIUtility.hotControl == controlId)
                     {
                         EditorGUIUtility.hotControl = 0;

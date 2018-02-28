@@ -5,6 +5,8 @@ Shader "Hidden/Delighter/NormalizeLut"
 #include "UnityCG.cginc"
 #pragma target 5.0
 
+    #pragma shader_feature LINEAR_OUTPUT
+
 	StructuredBuffer<uint4> _LutBuffer;
 	uint2 _LutOutputSize;
 
@@ -38,6 +40,10 @@ Shader "Hidden/Delighter/NormalizeLut"
 		
 		float4 LutColor = DecLutBuf(_LutBuffer, _LutOutputSize, i.uv);
 		LutColor = NormAlpha(LutColor);
+
+#if LINEAR_OUTPUT
+        LutColor.rgb = GammaToLinearSpace(LutColor.rgb);
+#endif
 		
 		return LutColor;
 	}

@@ -65,6 +65,12 @@ namespace UnityEditor.DelightingInternal
             latLongPreviewMaterial.SetInt("_UseSaftyZone", useExposure ? 1 : 0);
             latLongPreviewMaterial.SetBuffer("_AverageColor", averageColor);
 
+#if UNITY_2018_1_OR_NEWER
+            latLongPreviewMaterial.EnableKeyword("LINEAR_OUTPUT");
+#else
+            latLongPreviewMaterial.DisableKeyword("LINEAR_OUTPUT");
+#endif
+
             return latLongPreviewMaterial;
         }
 
@@ -548,9 +554,13 @@ namespace UnityEditor.DelightingInternal
             Assert.IsNotNull(m_ColorCorrect);
 
             var temporaryRT = RenderTexture.GetTemporary(m_ColorCorrect.width, m_ColorCorrect.height, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
-            GL.sRGBWrite = (QualitySettings.activeColorSpace == ColorSpace.Linear);
+#if UNITY_2018_1_OR_NEWER
+            DelightingHelpers.PushSRGBWrite(true);
+#else
+            DelightingHelpers.PushSRGBWrite(false);
+#endif
             Graphics.Blit(m_ColorCorrect, temporaryRT);
-            GL.sRGBWrite = false;
+            DelightingHelpers.PopSRGBWrite();
 
             var exportedUnlit = new Texture2D(m_ColorCorrect.width, m_ColorCorrect.height, TextureFormat.ARGB32, false, false);
             RenderTexture previous = RenderTexture.active;
@@ -577,8 +587,9 @@ namespace UnityEditor.DelightingInternal
             true);
 
             var temporaryRT = RenderTexture.GetTemporary(vm.latLongA.width, vm.latLongA.height, 0, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);
-            GL.sRGBWrite = (QualitySettings.activeColorSpace == ColorSpace.Linear);
+            DelightingHelpers.PushSRGBWrite(false);
             Graphics.Blit(null, temporaryRT, mat, 0);
+            DelightingHelpers.PopSRGBWrite();
 
             var exportedLatLong = new Texture2D(vm.latLongA.width, vm.latLongA.height, TextureFormat.RGBAFloat, false, true);
             RenderTexture previous = RenderTexture.active;
@@ -888,6 +899,11 @@ namespace UnityEditor.DelightingInternal
             var material = kNormLutMaterial;
             material.SetVector("_LutOutputSize", new Vector2(resultLut.width, resultLut.height));
             material.SetBuffer("_LutBuffer", LutBuffer);
+#if UNITY_2018_1_OR_NEWER
+            material.EnableKeyword("LINEAR_OUTPUT");
+#else
+            material.DisableKeyword("LINEAR_OUTPUT");
+#endif
             Graphics.Blit(null, resultLut, material, 0);
         }
 
