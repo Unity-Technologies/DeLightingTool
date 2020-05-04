@@ -14,6 +14,7 @@ CBUFFER_END
 
 RWStructuredBuffer<uint4> _Buffer;
 uint _Threshold;
+uint _Offset;
 
 
 // Kernel
@@ -24,10 +25,10 @@ void KClean(uint dispatchId : SV_DispatchThreadID)
 {
 
 	_Threshold = 10;
-	float4 bufferColor = _Buffer[dispatchId];
+	float4 bufferColor = _Buffer[dispatchId + _Offset];
 	if (bufferColor.a < _Threshold)
 	{
-		_Buffer[dispatchId] = uint4(_Buffer[dispatchId].rgb, 0);
+		_Buffer[dispatchId + _Offset] = uint4(_Buffer[dispatchId + _Offset].rgb, 0);
 	}
 	
 }

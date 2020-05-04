@@ -769,12 +769,24 @@ namespace UnityEditor.DelightingInternal
 
         static void CleanBuffer(ComputeBuffer _buffer, int threshold)
         {
+            const uint k_MaxDispatchCount = 65535;
+            
             var cs = kCleanBufferShader;
             int kernel = cs.FindKernel("KClean");
             cs.SetBuffer(kernel, "_Buffer", _buffer);
             cs.SetInt("_Threshold", threshold);
 
-            cs.Dispatch(kernel, _buffer.count / 32, 1, 1);
+            var dispatchSize = _buffer.count / 32;
+
+            var dispatchCount = (dispatchSize + k_MaxDispatchCount - 1) / k_MaxDispatchCount;
+            for (var i = 0; i < dispatchCount - 1; ++i)
+            {
+                cs.SetInt("_Offset", (int)(i * k_MaxDispatchCount));
+                cs.Dispatch(kernel, (int)k_MaxDispatchCount, 1, 1);
+            }
+            
+            cs.SetInt("_Offset", (int)((dispatchCount - 1) * k_MaxDispatchCount));
+            cs.Dispatch(kernel, (int)(dispatchSize % k_MaxDispatchCount), 1, 1);
         }
 
 
