@@ -9,7 +9,7 @@ namespace UnityEditor.Experimental.VXMLInternal
     public class DOMDynamicElement : DOMElement
     {
         [Serializable]
-        public class DOMElement : DOMContainer
+        public class DOMChildElement : DOMContainer
         {
         }
 
@@ -23,7 +23,7 @@ namespace UnityEditor.Experimental.VXMLInternal
         public string activeIndex;
 
         [XmlElement("element")]
-        public DOMElement[] elements;
+        public DOMChildElement[] elements;
     }
 
     public partial class VXMLDOMElementVisitor
